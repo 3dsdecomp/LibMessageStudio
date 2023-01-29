@@ -42,14 +42,6 @@ file(GLOB_RECURSE csourcefiles "Source/*.c")
 
 add_library(LibMessageStudio ${csourcefiles})
 
-target_link_options(LibMessageStudio PUBLIC
-    --cpu=MPCore --entry=__ctr_start --startup=__ctr_start --library_type=standardlib
-    --ref_cpp_init --scanlib --legacyalign
-    --tailreorder --no_remove --datacompressor=off --arm_only
-    --inline 
-    --verbose --mangled --symbols --paged
-    )
-
 target_compile_options(LibMessageStudio PUBLIC $<$<COMPILE_LANGUAGE:C>:
     --apcs=//interwork --cpu=MPCore --fpmode=fast --c99 --arm
     --signed_chars --multibyte-chars --locale=japanese
